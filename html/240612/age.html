@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const date = new Date();
+      const currentYear = date.getFullYear(); // 현재 년도
+      // var currentYear = 2021; // 기준 연도
+      var birthYear; // 태어난 연도
+      var age; // 저장할 나이
+
+      birthYear = prompt("태어난 연도를 입력하세요. (YYYY)", ""); // 입력 프롬포트 메세지
+      age = currentYear - birthYear + 1; // 한국 나이 계산
+      document.write(currentYear + "년 현재<br>");
+      document.write(
+        birthYear + "년에 태어난 사람의 나이는 " + age + "세 입니다."
+      );
+
+      // practice
+      const a = [1, 2, 3, 4, 5];
+      b = a;
+      const season = ["봄", "여름", "가을", "겨울"];
+    </script>
+  </body>
+</html>

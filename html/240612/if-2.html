@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var userNumber = prompt("숫자를 입력하세요.", "");
+
+      if (userNumber === null) {
+        // 취소를 눌렀을 경우
+        alert("입력이 취소되었습니다.");
+      } else if (userNumber === "") {
+        // 빈칸인 경우
+        alert("숫자를 입력해주세요.");
+      } else {
+        // 3항연산자(조건연산자) => 조건식?참:거짓
+        userNumber % 3 === 0 ? document.write(userNumber + "은(는) 3의 배수입니다.") : document.write(userNumber + "은(는) 3의 배수가 아닙니다.");
+      }
+    </script>
+  </body>
+</html>
