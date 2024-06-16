@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date</title>
+    <style>
+      .wrap {
+        background-color: skyblue;
+        border: 5px solid black;
+        text-align: center;
+        padding: 80px;
+        border-radius: 50%;
+        width: 400px;
+        height: 400px;
+        margin: auto;
+        box-sizing: border-box;
+      }
+      #result {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>책읽기</h1>
+      <p>
+        <span id="result"></span>일 연속으로<br />
+        책 읽기를 달성했군요.<br />
+        <br />
+        축하합니다!
+      </p>
+      <p>읽기 시작한 날 :<span id="startDay"></span></p>
+      <p>오늘 날짜 :<span id="currentDay"></span></p>
+    </div>
+    <!-- <button onclick="(setStartDay())">시작일 설정</button> -->
+    <input type="date" id="startDate" value="" onchange="setStartDay()" />
+    <script src="date.js"></script>
+  </body>
+</html>
