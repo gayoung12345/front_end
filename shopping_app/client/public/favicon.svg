@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 128 128" style="enable-background:new 0 0 128 128;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:#91592C;}
+	.st2{fill:#FFE1C5;}
+	.st3{fill:#03ABFF;}
+</style>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-14" y1="64.5" x2="142" y2="64.5">
+	<stop  offset="0" style="stop-color:#FBB03B"/>
+	<stop  offset="1" style="stop-color:#FCEE21"/>
+</linearGradient>
+<rect x="-14" y="-7" class="st0" width="156" height="143"/>
+<g>
+	<path class="st1" d="M42.62,57.6l-18.05-6.94c-2.58-0.99-3.86-3.88-2.87-6.46l7.51-19.54c0.99-2.58,3.88-3.86,6.46-2.87l18.05,6.94
+		c2.58,0.99,3.86,3.88,2.87,6.46l-7.51,19.54C48.09,57.3,45.2,58.59,42.62,57.6z"/>
+	<path class="st1" d="M77.23,28.76l20.25-4.97c2.68-0.66,5.39,0.98,6.05,3.66l5.35,21.79c0.46,1.87-0.68,3.76-2.56,4.22L84.61,58.8
+		c-1.87,0.46-3.76-0.68-4.22-2.56l-5.71-23.26C74.21,31.11,75.36,29.22,77.23,28.76z"/>
+	<g>
+		<ellipse class="st2" cx="64" cy="70" rx="51.5" ry="41"/>
+		<ellipse class="st1" cx="64" cy="73.56" rx="33.36" ry="26.56"/>
+	</g>
+</g>
+<g>
+	<polygon class="st3" points="52.8,75.11 47.51,78.05 42.32,74.94 42.42,68.89 47.71,65.95 52.9,69.06 	"/>
+	<polygon class="st3" points="85.58,75.11 80.29,78.05 75.1,74.94 75.2,68.89 80.49,65.95 85.68,69.06 	"/>
+</g>
+</svg>
