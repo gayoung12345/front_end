@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ProductItemProps } from "../interface";
+import { Link } from "react-router-dom";
+import { ProductItemProps } from "../type";
 
 const ProductItem = ({ product, onDelete, onUpdate }: ProductItemProps) => {
   const { id, name, price, explanation } = product;
@@ -10,8 +11,10 @@ const ProductItem = ({ product, onDelete, onUpdate }: ProductItemProps) => {
 
   return (
     <div>
-      <div>{id}</div>
-      <div>{name}</div>
+      <div  >{id}</div>
+      <div>
+        <Link to={`/${id}`}>{name}</Link>
+      </div>
       <div>{price}</div>
       <div>{explanation}</div>
 
