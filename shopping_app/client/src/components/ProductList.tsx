@@ -1,4 +1,4 @@
-import CircularProgress from "@mui/material/CircularProgress";
+import { CircularProgress, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ProductType } from "../type";
 import ProductItem from "./ProductItem";
@@ -49,7 +49,7 @@ const ProductList = () => {
     );
 
   return (
-    <ul>
+    <Grid container spacing={3}>
       {products.map((product) => (
         <ProductItem
           key={product.id}
@@ -58,7 +58,7 @@ const ProductList = () => {
           onUpdate={handleUpdate}
         />
       ))}
-    </ul>
+    </Grid>
   );
 };
 

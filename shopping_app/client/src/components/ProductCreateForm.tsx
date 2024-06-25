@@ -45,12 +45,46 @@ const ProductCreateForm = () => {
     return setExplanation(event.target.value);
   };
 
+  const uploadThumbnailRequest = (productId: string, thumbnail: File) => {
+    const formData = new FormData();
+    formData.append("thumbnail", thumbnail);
+    return fetch(`/product/thumbnail/${productId}`, {
+      method: "PATCH",
+      body: formData,
+    });
+  };
+
+  const createProductRequest = (newProduct: Omit<ProductType, "id">) => {
+    return fetch("/product", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    });
+  };
+
+  const handleCreateProduct = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const response = await createProductRequest({
+      name,
+      explanation,
+      price,
+    });
+    const data = await response.json();
+
+    if (thumbnail) {
+      await uploadThumbnailRequest(data.product.id, thumbnail);
+    }
+  };
+
   return (
-    <Container maxWidth="sm" sx={{ background: "white" }}>
+    <Container maxWidth="sm">
       <Typography variant="h4" align="center" gutterBottom>
         상품등록
       </Typography>
-      <form onSubmit={handleCreate}>
+      <form onSubmit={handleCreateProduct}>
         <TextField
           label="상품명"
           fullWidth

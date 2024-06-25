@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Card, CardMedia } from "@mui/material";
 import { ChangeEvent, useRef } from "react";
 
 type Props = {
@@ -28,9 +28,29 @@ const ThumbnailUploader = ({ value, onChange }: Props) => {
         hidden
         ref={inputRef}
       />
-      <Button variant="contained" onClick={handleButtonClick}>
-        섬네일 업로드
-      </Button>
+      <Card
+        sx={{
+          padding: 2,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          boxShadow: "none",
+        }}
+      >
+        {value && (
+          <CardMedia
+            component="img"
+            alt={value.name}
+            height={200}
+            sx={{ objectFit: "contain", marginBottom: 2 }}
+            src={URL.createObjectURL(value)}
+          />
+        )}
+        <Button variant="contained" onClick={handleButtonClick}>
+          섬네일 업로드
+        </Button>
+      </Card>
     </>
   );
 };
