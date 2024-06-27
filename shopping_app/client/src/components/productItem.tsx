@@ -1,13 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { ProductItemProps } from "../type";
+import { Link, useNavigate } from "react-router-dom";
 import {
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  CardActions,
   Button,
+  Card,
+  CardActions,
+  CardContent,
   CardMedia,
+  Grid,
+  Typography,
 } from "@mui/material";
 import { API_SERVER_DOMAIN } from "./ApiServer";
 
@@ -30,6 +31,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
             title={product.name}
           />
         )}
+
         <CardContent sx={{ padding: 0 }}>
           <Typography
             gutterBottom
@@ -44,10 +46,10 @@ const ProductItem = ({ product }: ProductItemProps) => {
             {product.name}
           </Typography>
           <Typography
-            variant="body2"
-            color="text.secondary"
+            gutterBottom
+            variant="h5"
+            component="div"
             sx={{
-              height: 30,
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
@@ -56,6 +58,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
             {product.price}
           </Typography>
           <Typography
+            gutterBottom
             variant="body2"
             color="text.secondary"
             sx={{

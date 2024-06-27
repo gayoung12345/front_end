@@ -1,48 +1,48 @@
 import React, { useState } from "react";
 import { ProductType } from "../type";
-import { Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField,
+  Typography,
+} from "@mui/material";
 import ThumbnailUploader from "./ThumbnailUploader";
+import { useNavigate } from "react-router-dom";
 
 const ProductCreateForm = () => {
-  // 초기값 설정
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
   const [explanation, setExplanation] = useState("");
+  const [price, setPrice] = useState(0);
   const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [createdProductId, setCreatedProductId] = useState("");
+  const navigate = useNavigate();
 
-  // 물건 등록
-  const handleCreate = (event: React.FormEvent) => {
-    event.preventDefault();
-    const newProduct: Omit<ProductType, "id"> = {
-      name,
-      explanation,
-      price,
-    };
-    fetch("/product", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
+  /* 상품생성
+      fetch('api주소',{옵션}).then().then()
+  */
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    return setName(event.target.value);
+    setName(event.target.value);
   };
-
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    return setPrice(Number(event.target.value));
+    setPrice(Number(event.target.value));
+  };
+  const handleExplanationChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setExplanation(event.target.value);
   };
 
-  const handleExplanationChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    return setExplanation(event.target.value);
+  const handlePushProductPage = () => {
+    setIsModalOpen(false);
+    navigate(`/product/${createdProductId}`);
   };
 
   const uploadThumbnailRequest = (productId: string, thumbnail: File) => {
@@ -67,16 +67,13 @@ const ProductCreateForm = () => {
   const handleCreateProduct = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const response = await createProductRequest({
-      name,
-      explanation,
-      price,
-    });
+    const response = await createProductRequest({ name, price, explanation });
     const data = await response.json();
 
-    if (thumbnail) {
-      await uploadThumbnailRequest(data.product.id, thumbnail);
-    }
+    if (thumbnail) await uploadThumbnailRequest(data.product.id, thumbnail);
+
+    setCreatedProductId(data.product.id);
+    setIsModalOpen(true);
   };
 
   return (
@@ -92,7 +89,6 @@ const ProductCreateForm = () => {
           onChange={handleNameChange}
           margin="normal"
         />
-
         <TextField
           label="가격"
           fullWidth
@@ -100,9 +96,8 @@ const ProductCreateForm = () => {
           onChange={handlePriceChange}
           margin="normal"
         />
-
         <TextField
-          label="상품 설명"
+          label="상품설명"
           fullWidth
           multiline
           rows={5}
@@ -114,16 +109,38 @@ const ProductCreateForm = () => {
           value={thumbnail}
           onChange={(file) => setThumbnail(file)}
         />
+
         <Button
           type="submit"
-          variant="contained"
           color="primary"
           fullWidth
+          variant="contained"
           sx={{ marginTop: 6 }}
         >
-          생성
+          등록
         </Button>
       </form>
+
+      <Dialog
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          성공적으로 등록했습니다.
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            상세페이지로 이동합니다.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handlePushProductPage} autoFocus>
+            확인
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };

@@ -12,13 +12,11 @@ const ThumbnailUploader = ({ value, onChange }: Props) => {
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) onChange(event.target.files[0]);
   };
-
   const handleButtonClick = () => {
     if (inputRef.current) {
       inputRef.current.click();
     }
   };
-
   return (
     <>
       <input
@@ -48,7 +46,7 @@ const ThumbnailUploader = ({ value, onChange }: Props) => {
           />
         )}
         <Button variant="contained" onClick={handleButtonClick}>
-          섬네일 업로드
+          썸네일 업로드
         </Button>
       </Card>
     </>

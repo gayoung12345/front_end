@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -9,10 +8,12 @@ import {
   IconButton,
   Container,
   Fab,
+  CircularProgress,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CreateIcon from "@mui/icons-material/Create";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   children: React.ReactNode;
@@ -20,7 +21,6 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   const navigate = useNavigate();
-
   const handlePushHomePage = () => navigate("/");
   const handlePushCartPage = () => navigate("/cart");
   const handlePushCreatePage = () => navigate("/create");
@@ -39,7 +39,6 @@ const Layout = ({ children }: Props) => {
             >
               <MenuIcon />
             </IconButton>
-
             <Typography
               variant="h1"
               component="div"
@@ -53,16 +52,16 @@ const Layout = ({ children }: Props) => {
             >
               온라인쇼핑몰
             </Typography>
-
             <Button color="inherit" onClick={handlePushCartPage}>
-              <ShoppingCartIcon fontSize="large" />
+              <ShoppingCartIcon />
             </Button>
           </Toolbar>
         </AppBar>
-        <Container fixed>{children}</Container>
+        <Container fixed sx={{ marginTop: 5 }}>
+          {children}
+        </Container>
       </Box>
-
-      <Box sx={{ position: "fixed", bottom: "16px", right: "16px" }}>
+      <Box sx={{ position: "fixed", right: "20px", bottom: "20px" }}>
         <Fab color="primary" onClick={handlePushCreatePage}>
           <CreateIcon />
         </Fab>

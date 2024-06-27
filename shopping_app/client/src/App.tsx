@@ -1,14 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-import { HomePage, ProductCreatePage, ProductPage } from "./pages";
+import Homepage from "./pages/Homepage";
+import ProductPage from "./pages/ProductPage";
+import ProductCreatePage from "./pages/ProuductCreatePage";
 import Layout from "./components/Layout";
+import PurchasePage from "./pages/PurchasePage";
+import CartPage from "./pages/CartPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   return (
     <Layout>
       <Routes>
-        <Route index element={<HomePage />} />
+        <Route index element={<Homepage />} />
         <Route path="create" element={<ProductCreatePage />} />
+        <Route path="cart" element={<CartPage />} />
         <Route path="product/:productId" element={<ProductPage />} />
+        <Route path="purchase/:productId" element={<PurchasePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
   );
