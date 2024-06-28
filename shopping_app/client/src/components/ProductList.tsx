@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import { ProductType } from "../type";
 import { CircularProgress, Grid } from "@mui/material";
+import { getProducts } from "./Api";
 
 const ProductList = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -9,10 +10,17 @@ const ProductList = () => {
 
   useEffect(() => {
     setIsLoading(true);
+
+    getProducts()
+      .then((response) => setProducts(response.data.products))
+      .finally(() => setIsLoading(false));
+
+    /*
     fetch("/product")
       .then((res) => res.json())
       .then((data) => setProducts(data.products))
       .finally(() => setIsLoading(false));
+    */
   }, []);
 
   if (isLoading)

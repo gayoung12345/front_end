@@ -11,6 +11,7 @@ import { ProductType } from "../type";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PurchaseForm from "../components/PurchaseForm";
+import { getProduct } from "../components/Api";
 
 type ParamsType = {
   productId: string;
@@ -21,9 +22,16 @@ const PurchasePage = () => {
   const { productId } = useParams<ParamsType>();
 
   useEffect(() => {
+    if (productId) {
+      getProduct(productId).then((response) =>
+        setProduct(response.data.product)
+      );
+    }
+    /*
     fetch(`/product/${productId}`)
       .then((res) => res.json())
       .then((data) => setProduct(data.product));
+    */
   }, [productId]);
 
   if (!product) return <h1>찾으시는 상품이 없습니다.</h1>;
